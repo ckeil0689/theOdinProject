@@ -1,0 +1,144 @@
+body, a, p {
+	font: normal .9em Arial, sans-serif;
+	text-decoration: none;
+	color: #222;
+}
+
+body {
+	background: #fff;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:visited {
+	font-color: #555;
+}
+
+#topbar {
+	width: 96%;
+	height: 60px;
+
+	display: table;
+
+	padding-left: 2%;
+	padding-right: 2%;	
+}
+
+#navElements {
+	display: table-cell;
+	white-space: nowrap;
+	vertical-align: middle;
+	text-align: right;
+}
+
+#txtlinks, #imglinks {
+	margin-left: 0!important;
+	margin-right: 0!important;
+}
+
+#txtlinks {
+	padding-right: 15px;
+	display: inline-block;
+	height: 24px;
+}
+
+#imglinks {
+	position: relative;
+	float: right;
+}
+
+.navlink {
+	height: 30px;
+	padding-left: 15px;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+#profilePic {
+	border-radius: 100%;
+}
+
+#share_ctnr {
+	width: 60px;
+	padding-left: 15px;
+}
+
+#share {
+	width: 60px;
+	text-align: center;
+	line-height: 30px;
+	background: #efefef;
+}
+
+#share:hover {
+	background: #ddd;
+}
+
+#share a:hover{
+	text-decoration: none;
+}
+
+#hplogo {
+	width: 269px; height: 95px;
+
+	margin-left: auto;
+	margin-right: auto;
+
+	padding-top: 112px;
+}
+
+#centerbox {
+	height: 231px; width: 100%;
+	margin-top: 20px;
+}
+
+#searchbar {
+	border: 1px solid #ddd;
+	width: 30%; min-height: 28px;
+	line-height: 28px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#searchbar:hover {
+	border-color: #aaa;	
+}
+
+#searchbar:focus {
+	border-color: #00f;	
+}
+
+#searchbox {
+	width: 95%; min-height: 24px;
+	border: none;
+}
+
+#searchbox:focus {
+	 outline-width: 0;
+}
+
+.qBtn {
+	font: bold 0.8em Arial, sans-serif;
+	margin: 10px;
+	height: 2.5em;
+	border-radius: 2px;
+	background: #eee;
+	border: 1px solid #ddd;
+	outline-width: 0;
+}
+
+.qBtn:hover {
+	border-color: #e5e5e5;
+	box-shadow: 0 1px 1px 1px #ccc;
+}
+
+.qBtn:active {
+	border-color: #eee;
+	box-shadow: 0 0 0 #fff;
+	transform: translate(0, 2px);
+	-webkit-transform: translate(0, 2px);
+	-moz-transform: translate(0, 2px);
+	-ms-transform: translate(0, 2px);
+}

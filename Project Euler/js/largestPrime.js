@@ -1,4 +1,11 @@
-var findLargestPrime = function (limit) {
+var findLargestPrime = function () {
+
+	var limit = document.getElementById('enteredNum_P3').value;
+	if(isNaN(limit)) {
+		while(isNaN(limit)) {
+			limit = prompt("Nope, not a number. Try again:");
+		}
+	}
 
 	var largestPrime = 0;
 

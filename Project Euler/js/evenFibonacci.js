@@ -1,5 +1,6 @@
-var evenFiboSum = function (limit) {
+var evenFiboSum = function () {
 
+	var limit = document.getElementById('enteredNum_P2').value;
 	var sum = 0;
 	var first = 1;
 	var second = 2;

@@ -21,17 +21,23 @@
 
 		<div class='problemBox'>
 			<h4>Problem 1 - Multiples of 3 and 5</h4>
-			<input type='button' value='Solve!' class='eulerBtn' onclick='check35(1000);'/>
+			<p>Enter a number:</p>
+			<input type='text' id='enteredNum_P1' name='valueField1' />
+			<input type='button' value='Solve!' class='eulerBtn' onclick='check35();'/>
 			<div class='resultBox' id='P1_result'></div>
 		</div>
 		<div class='problemBox'>
 			<h4>Problem 2 - Even Fibonacci Numbers</h4>
-			<input type='button' value='Solve!' class='eulerBtn' onclick='evenFiboSum(4000000);'/>
+			<p>Enter a number:</p>
+			<input type='text' id='enteredNum_P2' name='valueField2' />
+			<input type='button' value='Solve!' class='eulerBtn' onclick='evenFiboSum();'/>
 			<div class='resultBox' id='P2_result'></div>
 		</div>
 		<div class='problemBox'>
-			<h4>Problem 3 - Largest Prime Factor</h4>
-			<input type='button' value='Solve!' class='eulerBtn' onclick='findLargestPrime(13195);'/> 
+			<h4>Problem 3 - Largest Prime Factor (Brute)</h4>
+			<p>Enter a number:</p>
+			<input type='text' id='enteredNum_P3' name='valueField3' />
+			<input type='button' value='Solve!' class='eulerBtn' onclick='findLargestPrime();'/> 
 			<div class='resultBox' id='P3_result'></div>
 		</div>
 		<footer><p>(c) Chris Keil - 2014</p></footer>

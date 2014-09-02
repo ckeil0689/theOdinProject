@@ -1,5 +1,6 @@
-var check35 = function (num) {
+var check35 = function () {
 
+	var num = document.getElementById('enteredNum_P1').value;
 	var sum = 0;
 	var count = 0;
 

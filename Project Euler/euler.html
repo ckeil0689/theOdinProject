@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Euler Problems</title>
+
+		<link rel="stylesheet" type="text/css" href="css/eulerStyle.css">
+		<!-- Links to JavaScript solutions of Project Euler problems. -->
+		<script type="text/javascript" src="js/multiples35.js"></script>
+		<script type="text/javascript" src="js/evenFibonacci.js"></script>
+		<script type="text/javascript" src="js/largestPrime.js"></script>
+	</head>	
+
+	<body>
+
+		<div id='headbox'>
+			<h1>Solutions for Project Euler</h1>
+			<h3>-as part of <a href='https://www.theodinproject.com'>The Odin Project</a></h3>
+		</div>
+
+		<div class='problemBox'>
+			<h4>Problem 1 - Multiples of 3 and 5</h4>
+			<input type='button' value='Solve!' class='eulerBtn' onclick='check35(1000);'/>
+			<div class='resultBox' id='P1_result'></div>
+		</div>
+		<div class='problemBox'>
+			<h4>Problem 2 - Even Fibonacci Numbers</h4>
+			<input type='button' value='Solve!' class='eulerBtn' onclick='evenFiboSum(4000000);'/>
+			<div class='resultBox' id='P2_result'></div>
+		</div>
+		<div class='problemBox'>
+			<h4>Problem 3 - Largest Prime Factor</h4>
+			<input type='button' value='Solve!' class='eulerBtn' onclick='findLargestPrime(13195);'/> 
+			<div class='resultBox' id='P3_result'></div>
+		</div>
+		<footer><p>(c) Chris Keil - 2014</p></footer>
+	</body>
+</html>

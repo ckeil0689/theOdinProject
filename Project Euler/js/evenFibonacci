@@ -1,0 +1,20 @@
+var evenFiboSum = function (limit) {
+
+	var sum = 0;
+	var first = 1;
+	var second = 2;
+	var fiboNum = 0;
+
+	while(fiboNum <= limit) {
+
+		fiboNum = first + second;
+		first = second;
+		second = fiboNum;
+
+		if(fiboNum % 2 === 0) {
+			sum += fiboNum;
+		}
+	}
+
+	document.getElementById('P2_result').innerHTML = sum;
+}

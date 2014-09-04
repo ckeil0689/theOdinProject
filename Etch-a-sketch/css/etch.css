@@ -9,14 +9,27 @@ h1 {
 	font-size: 2em;
 }
 
+#header {
+	color: #2ecc71;
+	font-size: 2em;
+	display: none;
+	margin: 0 0 0 40px;
+	height: 50px;
+	line-height: 50px;
+	text-align: left;
+}
+
 #canvas {
-	width: 50%; height: 50%;
+	width: auto; height: auto;
 	background: #fff;
+	padding: 5px;
+	margin-left: 10px;
+	margin-right: 10px;
+
+	display: none;
 
 	position: absolute;
-  	top: 50%;
-  	left: 50%;
-  	transform: translate(-50%, -50%);
+  	top: 50px; bottom: 50px;
 }
 
 #container {
@@ -39,7 +52,7 @@ h1 {
 	position: absolute;
   	top: 50%;
   	left: 50%;
-  	transform: translate(-50%, -50%);
+  	transform: translate(0, 0);
 }
 
 #startBtn, #initial {
@@ -72,22 +85,14 @@ h1 {
 	display: none;
 
 	position: absolute;
-  	top: 95%;
+	bottom: 10px;
   	left: 50%;
-  	transform: translate(-95%, -50%);
-}
-
-.touched, .untouched {
-	float: left;
-	margin-left: 1px;
-	margin-bottom: 1px;
-	width: 10px; height: 10px;
-}
-
-.touched {
-	background: #555;
+  	transform: translate(-50%, 0);
 }
 
 .untouched {
-	background: #eee;
+	float: left;
+	margin: 1px;
+	width: 10px; height: 10px;
+	background: #fff;
 }

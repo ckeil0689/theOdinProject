@@ -3,9 +3,19 @@ $(document).ready(function() {
 	$('#startBtn').click(function() {
 
 		$('#initial').remove();
+		$('#header').show();
+		$('#canvas').show();
 		$('#resetBtn').show();
 
-		var divNum = 16;//$("#divNum :input[name='numGetter'").val();
+		var cw = $('#container').width() - 20;
+		var ch = $('#container').height() - 100;
+
+
+		//Assume 15px width + height per element (10 size, 2 margin)
+		var xNum = Math.floor(cw/12);
+		var yNum = Math.floor(ch/12);
+
+		var divNum = xNum * yNum;
 
 		for(var i = 0; i < divNum; i++) {
 
@@ -13,8 +23,9 @@ $(document).ready(function() {
 		}
 
 		$('div .untouched').hover(function() {
-			$(this).removeClass('untouched');
-			$(this).addClass('touched');
+			
+			var hex = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+			$(this).css('background', hex);
 
 		}, function() {
 
@@ -23,6 +34,6 @@ $(document).ready(function() {
 
 	$('#resetBtn').click(function() { 
 
-		$('.touched').removeClass('touched');
+		$('div .untouched').css('background', '#fff');
 	});
 });

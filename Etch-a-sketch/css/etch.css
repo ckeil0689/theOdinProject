@@ -17,14 +17,16 @@ h1 {
 	height: 50px;
 	line-height: 50px;
 	text-align: left;
+	float: left;
 }
 
 #canvas {
 	width: auto; height: auto;
-	background: #fff;
+	min-width: 800px; min-height: 600px;
 	padding: 5px;
 	margin-left: 10px;
 	margin-right: 10px;
+	clear: both;
 
 	display: none;
 
@@ -52,7 +54,35 @@ h1 {
 	position: absolute;
   	top: 50%;
   	left: 50%;
-  	transform: translate(0, 0);
+  	transform: translate(-50%, -50%);
+}
+
+input[type=radio] {
+    display:none; 
+    margin:10px;
+}
+
+input[type=radio] + label {
+    display:inline-block;
+    height: 30px;
+    line-height: 30px;
+    padding: 1px 15px 1px 15px;
+    background-color: #aaa;
+    border-radius: 15px;
+    color: #fff;
+}
+
+input[type=radio]:checked + label { 
+   	background-image: none;
+    background-color: #2ecc71;
+}
+
+#selectStyle {
+	display: none;
+	margin: 0 0 0 40px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
 }
 
 #startBtn, #initial {
@@ -90,9 +120,15 @@ h1 {
   	transform: translate(-50%, 0);
 }
 
-.untouched {
+.paint, .treasure {
 	float: left;
-	margin: 1px;
-	width: 10px; height: 10px;
+	width: 12px; height: 12px;
+}
+
+.paint {
+	background: #fff;
+}
+
+.treasure {
 	background: #fff;
 }

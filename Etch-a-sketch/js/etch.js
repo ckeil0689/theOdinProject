@@ -1,3 +1,11 @@
+// To account for space not used by #canvas in #container
+var wAdjust = 20;
+var hAdjust = 100;
+
+// Initial dimensions
+var cw = $('#container').width() - wAdjust;
+var ch = $('#container').height() - hAdjust;
+
 $(document).ready(function() {
 	
 	$('#startBtn').click(function() {
@@ -5,29 +13,44 @@ $(document).ready(function() {
 		$('#initial').remove();
 		$('#header').show();
 		$('#selectStyle').show();
+		makeGrid(cw, ch);
 
+		$('#canvas').show();
+		$('#reset').show();
 		setCanvas();
 	});
 
 	$('#resetBtn').click(function() { 
-		
-		$('#canvas').empty();
-		setCanvas();
+		resetCanvas();
 	});
 
 	$('.radio').click(function() { 
 		
-		$('#canvas').empty();
-		setCanvas();
+		resetCanvas();
 	});
 });
 
+var resetCanvas = function() {
+
+	var checkW = $('#container').width() - wAdjust;
+	var checkH = $('#container').height() - hAdjust;
+
+	if(checkW !== cw || checkH !== ch) {
+
+		cw = checkW;
+		ch = checkH;
+		
+		$('#canvas').empty();
+		makeGrid(cw, ch);
+
+	} else {
+		clearGrid();
+	}
+
+	setCanvas();
+};
+
 var setCanvas = function() {
-
-	makeGrid();
-
-	$('#canvas').show();
-	$('#reset').show();
 
 	var option = $('input[name=radios]:checked').val();
 
@@ -39,22 +62,23 @@ var setCanvas = function() {
 		case '1': 	rainbow();
 					break;
 
-		case '2': 	trail();
+		case '2': 	asteroid();
 					break;
 
 		default: $(this).css('background', '#aaa');
 	}
 };
 
-var makeGrid = function() {
+var clearGrid = function() {
 
-	var cw = $('#container').width() - 20;
-	var ch = $('#container').height() - 100;
+	$('.paint').css('background', '#fff');
+};
 
-	
-	var dim = 12; //element side length + margin
-	var xNum = Math.floor(cw/dim);
-	var yNum = Math.floor(ch/dim);
+var makeGrid = function(cwidth, cheight) {
+
+	var dim = 22; //element side length + margin
+	var xNum = Math.floor(cwidth/dim);
+	var yNum = Math.floor(cheight/dim);
 
 	var divNum = xNum * yNum;
 
@@ -68,7 +92,7 @@ var makeGrid = function() {
 
 var pencil = function() {
 
-	$('div .paint').hover(function() {
+	$('.paint').hover(function() {
 		
 		$(this).css('background', '#aaa');
 
@@ -79,7 +103,7 @@ var pencil = function() {
 
 var rainbow = function() {
 
-	$('div .paint').hover(function() {
+	$('.paint').hover(function() {
 		
 		var hex = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 		$(this).css('background', hex);
@@ -89,13 +113,25 @@ var rainbow = function() {
 	});
 };
 
-var trail = function() {
+var asteroid = function() {
 
-	$('div .paint').hover(function() {
+	$('.paint').hover(function() {
 		
-		$(this).css('background', '#aaa');
+		$(this).css('background', '#FFE510');
+		$(this).css('opacity', '1');
 
 	}, function() {
 
+		$(this).animate({opacity: 0, background: '#FFE5A3'}, 800);
 	});
+};
+
+//Handle-window resize to get a new canvas size
+var doit;
+window.onresize = function() {
+    
+    clearTimeout(doit);
+    doit = setTimeout(function() {
+       resetCanvas();
+    }, 100);
 };

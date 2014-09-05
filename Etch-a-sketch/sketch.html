@@ -2,36 +2,36 @@
 <html>
 	<head>
 		<meta charset= 'utf-8'>
-		<title>jSketchr</title>
+		<title>jSketch</title>
 
 		<link type='text/css' rel='stylesheet' href='css/etch.css' />
 
 		<!-- Google Web-Fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
-
-		<!-- jQuery -->
-		<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
-
-		<script type="text/javascript" src='js/etch.js'></script>
 	</head>
 
 	<body>
 		<div id='container'>
-			<h1 id='header'>jSketchr</h1>
+			<h1 id='header'>jSketch</h1>
 			<div id='selectStyle'>
 				<input checked type='radio' name="radios" class='radio' id='pencilBtn' value='0'><label for="pencilBtn">Pencil</label></input>
 				<input type='radio' name="radios" class='radio' id='rainbowBtn' value='1'><label for="rainbowBtn">Rainbow</label></input>
-				<input type='radio' name="radios" class='radio' id='trailBtn' value='2'><label for="trailBtn">Trail</label></input>
+				<input type='radio' name="radios" class='radio' id='trailBtn' value='2'><label for="trailBtn">Asteroid</label></input>
 			</div>
 			<div id='reset'>
 				<input type='button' value="New!" id='resetBtn'></input>
 			</div>
 			<div id='initial'>
-				<h1>Welcome to jSketchr!</h1>
+				<h1>Welcome to jSketch!</h1>
 				<input type='button' value="Let's sketch!" id='startBtn'></input>
 			</div>
 			<div id='canvas'></div>
 		</div>
-
+		<div id='footer'><p>(c) by Chris Keil, 2014</p></div>
 	</body>
+
+	<!-- jQuery & JavaScript -->
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src='js/etch.js'></script>
+
 </hmtl>

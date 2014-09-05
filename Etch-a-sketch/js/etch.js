@@ -14,15 +14,45 @@ $(document).ready(function() {
 		$('#canvas').empty();
 		setCanvas();
 	});
+
+	$('.radio').click(function() { 
+		
+		$('#canvas').empty();
+		setCanvas();
+	});
 });
 
 var setCanvas = function() {
 
+	makeGrid();
+
+	$('#canvas').show();
+	$('#reset').show();
+
+	var option = $('input[name=radios]:checked').val();
+
+	switch(option) {
+
+		case '0': 	pencil();
+					break;
+
+		case '1': 	rainbow();
+					break;
+
+		case '2': 	trail();
+					break;
+
+		default: $(this).css('background', '#aaa');
+	}
+};
+
+var makeGrid = function() {
+
 	var cw = $('#container').width() - 20;
 	var ch = $('#container').height() - 100;
 
-	//Assume 10px width + height per element (8 size, 2 margin)
-	var dim = 12;
+	
+	var dim = 12; //element side length + margin
 	var xNum = Math.floor(cw/dim);
 	var yNum = Math.floor(ch/dim);
 
@@ -34,24 +64,38 @@ var setCanvas = function() {
 
 		$canvas.append("<div class='paint'></div>");
 	}
+};
 
-	$('#canvas').show();
-	$('#resetBtn').show();
+var pencil = function() {
 
 	$('div .paint').hover(function() {
+		
+		$(this).css('background', '#aaa');
 
+	}, function() {
+
+	});
+};
+
+var rainbow = function() {
+
+	$('div .paint').hover(function() {
+		
 		var hex = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
 		$(this).css('background', hex);
 
 	}, function() {
 
 	});
+};
 
-	// $('div .treasure').hover(function() {
+var trail = function() {
 
-	// 	// window.location='www.reddit.com';
+	$('div .paint').hover(function() {
+		
+		$(this).css('background', '#aaa');
 
-	// }, function() {
+	}, function() {
 
-	// });
+	});
 };

@@ -19,16 +19,18 @@
 		<div id='container'>
 			<h1 id='header'>jSketchr</h1>
 			<div id='selectStyle'>
-				<input type='radio' name="radios" class='radio' id='pencilBtn'><label for="pencilBtn">Pencil</label></input>
-				<input type='radio' name="radios" class='radio' id='rainbowBtn'><label for="rainbowBtn">Rainbow</label></input>
-				<input type='radio' name="radios" class='radio' id='trailBtn'><label for="trailBtn">Trail</label></input>
+				<input checked type='radio' name="radios" class='radio' id='pencilBtn' value='0'><label for="pencilBtn">Pencil</label></input>
+				<input type='radio' name="radios" class='radio' id='rainbowBtn' value='1'><label for="rainbowBtn">Rainbow</label></input>
+				<input type='radio' name="radios" class='radio' id='trailBtn' value='2'><label for="trailBtn">Trail</label></input>
+			</div>
+			<div id='reset'>
+				<input type='button' value="New!" id='resetBtn'></input>
 			</div>
 			<div id='initial'>
 				<h1>Welcome to jSketchr!</h1>
 				<input type='button' value="Let's sketch!" id='startBtn'></input>
 			</div>
 			<div id='canvas'></div>
-			<input type='button' value="New!" id='resetBtn'></input>
 		</div>
 
 	</body>

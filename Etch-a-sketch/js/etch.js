@@ -52,21 +52,30 @@ var resetCanvas = function() {
 
 var setCanvas = function() {
 
-	var option = $('input[name=radios]:checked').val();
+	$('.paint').css('opacity', 1);
 
-	switch(option) {
+	$('.paint').hover(function() {
+		
+		switch($('input[name=radios]:checked').val()) {
 
-		case '0': 	pencil();
-					break;
+			case '0': 	pencil($(this));
+						break;
 
-		case '1': 	rainbow();
-					break;
+			case '1': 	rainbow($(this));
+						break;
 
-		case '2': 	asteroid();
-					break;
+			case '2': 	asteroid($(this));
+						break;
 
-		default: $(this).css('background', '#aaa');
-	}
+			default: $(this).css('background', '#aaa');
+		}
+	}, function() {
+
+		if($('input[name=radios]:checked').val() === '2') {
+			$(this).animate({opacity: 0}, 800);
+			$(this).css('background', '#aaa'); //smoke color
+		}
+	});
 };
 
 var clearGrid = function() {
@@ -90,40 +99,32 @@ var makeGrid = function(cwidth, cheight) {
 	}
 };
 
-var pencil = function() {
+// Drawing modes
+var pencil = function(element) {
 
-	$('.paint').hover(function() {
-		
-		$(this).css('background', '#aaa');
+	element.css('background', '#333');
 
-	}, function() {
+	var opc = parseFloat(element.css('opacity')); // get current opacity
 
-	});
+	if(opc === 1.0) {
+		element.css('opacity', 0.1);
+
+	} else {		
+		opc = parseFloat(element.css('opacity')) + 0.1;
+		element.css('opacity', opc);
+	}
 };
 
-var rainbow = function() {
-
-	$('.paint').hover(function() {
+var rainbow = function(element) {
 		
-		var hex = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
-		$(this).css('background', hex);
-
-	}, function() {
-
-	});
+	var hex = '#'+(Math.random()*0xFFFFFF<<0).toString(16);
+	element.css('background', hex);
 };
 
-var asteroid = function() {
+var asteroid = function(element) {
 
-	$('.paint').hover(function() {
-		
-		$(this).css('background', '#FFE510');
-		$(this).css('opacity', '1');
-
-	}, function() {
-
-		$(this).animate({opacity: 0, background: '#FFE5A3'}, 800);
-	});
+	element.css('background', '#FFE510');
+	element.css('opacity', '1');
 };
 
 //Handle-window resize to get a new canvas size

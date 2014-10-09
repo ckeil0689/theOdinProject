@@ -7,9 +7,10 @@ var cw = $('#container').width() - wAdjust;
 var ch = $('#container').height() - hAdjust;
 
 $(document).ready(function() {
-	
+
 	$('#startBtn').click(function() {
 
+		alert('hello');
 		$('#initial').remove();
 		$('#header').show();
 		$('#selectStyle').show();

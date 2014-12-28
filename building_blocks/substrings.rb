@@ -4,24 +4,25 @@
 
 #!/usr/bin/env ruby
 
-def substrings(string, dictionary)
+def substrings(str, dict)
+
+	# call downcase only once here
+	str.downcase!
 
 	dict_h = Hash.new(0)
 
-	# nested loops :(
-	dictionary.each do |word|
+	# nested loops :( -> O(n²)
+	dict.each do |word|
 
 		# generate key for hash
-		dict_h[word.downcase] if !dict_h.has_key?
+		key = word.downcase
+		dict_h[key] if !dict_h.has_key? key
 
-		# iterate over string to search instances of word
-		(0..string.length - 1).each do |i|
+		# iterate over str to search instances of word
+		(0..str.length - 1).each do |i|
 
-			substr = string[i, word.length].downcase
-
-			if word.eql? substr
-				dict_h[substr] += 1
-			end
+			substr = str[i, word.length]
+			dict_h[substr] += 1 if word.eql? substr
 		end
 	end
 
@@ -29,13 +30,13 @@ def substrings(string, dictionary)
 end
 
 # >>>> Examples from exercise
-string = "Howdy partner, sit down! How's it going?"
-dictionary = ["below","down","go","going","horn","how","howdy",
+str = "Howdy partner, sit down! How's it going?"
+dict = ["below","down","go","going","horn","how","howdy",
 	"it","i","low","own","part","partner","sit"]
 
-substring_count = substrings("below", dictionary)
+substring_count = substrings("below", dict)
 puts substring_count.inspect
 
-substring_count = substrings(string, dictionary)
+substring_count = substrings(str, dict)
 puts substring_count.inspect
 

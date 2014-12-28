@@ -16,7 +16,7 @@ def substrings(str, dict)
 
 		# generate key for hash
 		key = word.downcase
-		dict_h[key] if !dict_h.has_key? key
+		dict_h[key] unless dict_h.has_key? key
 
 		# iterate over str to search instances of word
 		(0..str.length - 1).each do |i|

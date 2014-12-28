@@ -6,18 +6,15 @@
 
 def substrings(string, dictionary)
 
-	dict_h = Hash.new
-
-	# set up dictionary hash
-	(0..dictionary.length - 1).each do |word|
-
-		key = dictionary[word].downcase
-		dict_h[key] = 0
-	end
+	dict_h = Hash.new(0)
 
 	# nested loops :(
 	dictionary.each do |word|
 
+		# generate key for hash
+		dict_h[word.downcase] if !dict_h.has_key?
+
+		# iterate over string to search instances of word
 		(0..string.length - 1).each do |i|
 
 			substr = string[i, word.length].downcase

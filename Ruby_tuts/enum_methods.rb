@@ -1,25 +1,21 @@
 module Enumerable
 
   def my_each
-
     i = 0
     while i < self.size
       yield self[i]
       i += 1
     end
     self
-
   end
 
   def my_each_with_index
-
     i = 0
     while i < self.size
       yield self[i], i
       i += 1
     end
     self
-
   end
 
   def my_select
@@ -42,48 +38,26 @@ module Enumerable
   end
 
   def my_any?
-
-    if block_given?
-      self.my_each do |num|
-        if(yield(num))
-          return true
-        end
-      end
-    else
-      self.my_each do |num|
-        if(num)
-          return true
-        end
+    self.my_each do |num|
+      if(block_given? ? yield(num) : num)
+        return true
       end
     end
-
     return false
   end
 
   def my_none?
-
     found = false
-    
-    if block_given?
-      self.my_each do |num|
-        if(yield(num))
-          found = true
-          break
-        end
-      end
-    else
-      self.my_each do |num|
-        if num
-          found = true
-          break
-        end
+    self.my_each do |num|
+      if(block_given? ? yield(num) : num)
+        found = true
+        break
       end
     end
     return !found
   end
 
   def my_count
-
     count = 0;
     if block_given?
       self.my_each do |num|
@@ -97,7 +71,6 @@ module Enumerable
       end
     end
     return count
-
   end
 
   def my_map(proc = nil)
@@ -115,7 +88,6 @@ module Enumerable
   end
 
   def my_inject(result = nil)
-    
     if result.nil?
       array = self[1..-1]
       result = self[0]
@@ -128,24 +100,11 @@ module Enumerable
     end
     result
   end
-
 end
 
 def multiply_els(array)
-
   array.inject do |product, n|
     product * n
   end
 end
-
-array = [1, 2, 4, 2]
-
-summe = array.map
-
-summe2 = array.my_map do |i|
-  i * i
-end
-
-puts "Mult: #{summe}"
-puts "Mult: #{summe2}"
 

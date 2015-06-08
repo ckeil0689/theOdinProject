@@ -16,7 +16,6 @@ class Grid
   end
 
   def set_field(id, val)
-
     if @field_set.has_key?(id) then
       @field_set[id] = val
       @filled_fields += 1
@@ -25,24 +24,20 @@ class Grid
 
     puts "This field does not exist. Try again!"
     return false
-
   end
 
   def print
-
     puts
     puts "     1    2    3 "
     print_row("1")
     print_row("2")
     print_row("3")
     puts
-
   end
 
   private #--------------------------
 
   def print_row(row_id)
-
     row = row_id + "  "
 
     @field_set.each do |key, value|
@@ -62,29 +57,24 @@ class Grid
 
     puts "    ---  ---  ---"
     puts row
-
   end
 
   def setup_grid
-
     row_ids = [1, 2, 3]
     col_ids = [1, 2, 3]
 
     @field_set = Hash.new
 
     row_ids.each do |r|
-
       col_ids.each do |c|
 
         id = r.to_s + c.to_s
         field_set[id] = 0
 
       end
-
     end
 
     @size = @field_set.size
-
   end
 end
 
@@ -137,11 +127,9 @@ class Game
           if has_entered then
             @active_player.add_field(field_id)
           end
-
         end
 
         grid.print
-
       end
 
       conclude
@@ -150,7 +138,6 @@ class Game
       puts
       puts "Ok, goodbye :("
     end
-
   end
 
   private #---------------------------------
@@ -160,20 +147,15 @@ class Game
   end
 
   def get_new_active(last_player)
-
     return (last_player.id == FIRST_PLAYER) ? @player2 : @player1
-
   end
 
   def is_field_taken?(field_id)
-
     return @player1.has_field?(field_id) || @player2.has_field?(field_id)
-
   end
 
   #check if all grid fields have been filled. The game needs to stop at that.
   def has_game_finished
-
     if @grid.filled_fields == @grid.size then
       puts "All fields filled."
       return true
@@ -184,7 +166,6 @@ class Game
 
   # checks winning conditions
   def has_won(row, col)
-
     return false if row < 0 || col < 0
 
     #some indices to work with... could be taken from Array if I wasnt using
@@ -244,7 +225,6 @@ class Game
     end
 
     return false
-
   end
 
   def set_won(player_id)
@@ -255,7 +235,6 @@ class Game
     puts "Done. The winner is: #{@won}. Congrats!"
     exit 
   end
-
 end
 
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -267,7 +246,6 @@ class Player
   attr_accessor :field_choices
 
   def initialize
-
     @@players += 1
 
     if @@players > 2
@@ -278,20 +256,15 @@ class Player
 
     @id = @@players
     @field_choices = Array.new
-
   end
 
   def add_field(field_id)
-    
     field_choices << field_id
   end
 
   def has_field? (field_id)
-
     return field_choices.include?(field_id)
-
   end
-
 end
 
 puts "Hello! Let's play Tic tac Toe."

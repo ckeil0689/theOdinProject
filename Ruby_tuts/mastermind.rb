@@ -9,7 +9,7 @@ class Game
   MAX_TURNS = 12
 
   attr_reader :human, :ai
-  attr_accessor :code
+  attr_accessor :code, :maker, :breaker
 
   def initialize
     set_players
@@ -17,11 +17,15 @@ class Game
   end
 
   def run
-    turns = 0
+    turns = 1
     until turns == MAX_TURNS
       puts "TURN #{turns}"
 
+      @breaker.guess
 
+      break if has_won
+      @maker.give_hint(@breaker.code_seq)
+      @breaker.set_new_seq
       turns += 1
     end
   end
@@ -37,13 +41,13 @@ class Game
 
       if answer == "y"
         puts "You will be the code maker."
-        @human = Player.new(Player::MAKER)
-        @ai = Player.new(Player::BREAKER)
+        @maker = Maker.new(Player::HUMAN)
+        @breaker = Breaker.new(Player::AI)
         players_defined = true
       elsif answer == "n"
         puts "You will be the code breaker."
-        @human = Player.new(Player::BREAKER)
-        @ai = Player.new(Player::MAKER)
+        @breaker = Breaker.new(Player::HUMAN)
+        @maker = Maker.new(Player::AI)
         players_defined = true
       else
         puts "Please only enter 'y' or 'n'."
@@ -52,38 +56,20 @@ class Game
   end
 
   def prep_game
-    @code = Code.new
-    if @human.id == Player::MAKER
-      puts "Pick #{Code::SIZE} colors. Duplicates are allowed:"
-      puts "Red, Green, Blue, Yellow, Orange, Purple"
+    maker.make_code
+  end
 
-      until @code.sequence.length == Code::SIZE
-        puts "Add a color (#{Code::SIZE - @code.sequence.length} left):"
-        color = gets.chomp
-        @code.add_color(color)
-        @code.print(@code.sequence)
-      end
-
-      puts "Your final code is: #{@code.print(@code.sequence)}"
-
-    elsif @human.id == Player::BREAKER
-      puts "AI is generating a code..."
-      @code.generate_sequence
-
-      puts "[TEST] final code is: #{@code.print(@code.sequence)}"
-    else
-      puts "Something blew up inside the code. Sorry :("
-      exit 1
-    end
+  def has_won
+    return @breaker.guess_code.guess_matches?(@maker.code_seq)
   end
 end
 
 class Player
 
-  MAKER = 1
-  BREAKER = 2
+  HUMAN = 1
+  AI = 2
 
-  attr_accessor :id, :role
+  attr_accessor :id
 
   def initialize(id)
     @id = id
@@ -91,49 +77,119 @@ class Player
 
 end
 
-class AI_Player < Player
+class Maker < Player
 
-  def initialize
-    super
+  attr_reader :code_seq
+
+  def initialize(id)
+    super(id)
   end
+
+  def make_code
+    @gen_code = Code.new
+    if @id == Player::HUMAN
+      @gen_code.make_seq
+
+      puts "Maker code is:" 
+      @gen_code.print(@gen_code.sequence)
+    elsif @id == Player::AI
+      @gen_code.generate_sequence
+    else
+      puts "When trying to make a code, the supplied ID is unknown."
+    end
+
+    @code_seq = @gen_code.sequence
+  end
+
+  def give_int(guess_code)
+
+    black_pins = 0
+    white_pin = 0
+
+    # count black (position + color correct)
+    guess_code.each_with_index do |guess, index|
+      black_pins += 1 if guess == @code_seq[index]
+    end
+
+    #count whites (color correct only)
+    guess_code.each do |guess|
+      @col
+
+    end
+
+    puts ">>>> HINT <<<<"
+    puts "Black Pins: #{black_pins}"
+
+  end
+end
+
+class Breaker < Player
+
+  attr_accessor :guess_code
+
+  def initialize(id)
+    super(id)
+    @guess_code = Code.new
+  end
+
+  #generates a guess code 
+  def guess
+    puts "Write down a guess."
+    @guess_code.make_seq
+  end
+
 end
 
 class Code
 
   SIZE = 4
-  COLORS = (1..SIZE).to_a
+  MAX_ID = 6
 
   attr_accessor :sequence
 
   def initialize
-    @sequence = Array.new
+    set_new_seq
+  end
+
+  def make_seq
+    puts "Pick #{Code::SIZE} colors. Duplicates are allowed:"
+    puts "Red, Green, Blue, Yellow, Orange, Purple"
+
+    until @sequence.length == SIZE
+      puts "Add a color (#{SIZE - @sequence.length} left):"
+      color = gets.chomp
+      add_color(color)
+      print(@sequence)
+    end
   end
 
   def guess_matches?(guessed_code)
+    len = guessed_code.length
+    return false if len != SIZE || len != @sequence.length
+
     @sequence.each_with_index do |col, i|
       return false if col != guessed_code[i]
     end
     return true
   end
 
+  def set_new_seq
+    @sequence = Array.new
+  end
+
   def print(code)
     guess_str = ""
 
     code.each do |col|
-      guess_str += get_color_name(col) + ", "
+      guess_str += get_color_name(col) + " "
     end
-    puts "Current code is: #{guess_str}"
-  end
-
-  def add_color(color)
-    id = get_color_id(color)
-    @sequence << id if id != 0
+    puts "#{guess_str}"
   end
 
   def generate_sequence
 
     until @sequence.length == SIZE
-      @sequence << 1 + Random.rand(6)
+      @sequence << 1 + Random.rand(MAX_ID)
     end
 
     if is_valid(@sequence)
@@ -148,13 +204,18 @@ class Code
     return false if code.length != SIZE
 
     code.each do |col|
-      return false if col < 1 || col > SIZE
+      return false if col < 1 || col > MAX_ID
     end
 
     return true
   end
 
   private #------------
+
+  def add_color(color)
+    id = get_color_id(color)
+    @sequence << id if id != 0
+  end
 
   # use an enum?!
 
@@ -202,5 +263,11 @@ class Code
   end
 end
 
-puts "Welcome to Mastermind!"
-game = Game.new
+begin
+  puts "Welcome to Mastermind!"
+  game = Game.new
+  game.run
+rescue SystemExit, Interrupt
+  puts
+  puts "Ok, goodbye :("
+end

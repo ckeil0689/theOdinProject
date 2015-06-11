@@ -25,8 +25,16 @@ class Game
 
       break if has_won
       @maker.give_hint(@breaker.code_seq)
-      @breaker.set_new_seq
+      @breaker.reset_guess
       turns += 1
+    end
+
+    if has_won
+      puts "Great, the correct sequence was found: #{@maker.code_seq}"
+      exit 0
+    else
+      puts "Too bad, next time!"
+      puts "The code was #{maker.code_seq}"
     end
   end
 
@@ -79,6 +87,11 @@ end
 
 class Maker < Player
 
+  # pins
+  NONE = 0
+  BLACK = 1
+  WHITE = 2
+
   attr_reader :code_seq
 
   def initialize(id)
@@ -101,31 +114,50 @@ class Maker < Player
     @code_seq = @gen_code.sequence
   end
 
-  def give_int(guess_code)
+  def give_hint(guess_code)
+
+    pins = Array.new(NONE)
 
     black_pins = 0
-    white_pin = 0
+    white_pins = 0
 
     # count black (position + color correct)
-    guess_code.each_with_index do |guess, index|
-      black_pins += 1 if guess == @code_seq[index]
+    guess_code.each_with_index do |guess, i|
+      if guess == @code_seq[i]
+        black_pins += 1 
+        pins[i] = BLACK
+      end
     end
 
     #count whites (color correct only)
-    guess_code.each do |guess|
-      @col
+    guess_code.each_with_index do |guess, i|
+      @code_seq.each_with_index do |color, j|
 
+        if color == guess && pins[j] != BLACK
+          white_pins += 1
+          pins[j] = WHITE
+          break
+        end
+        
+      end
     end
 
+    puts
     puts ">>>> HINT <<<<"
-    puts "Black Pins: #{black_pins}"
+    puts "Black pins (correct color & position): #{black_pins}"
+    puts "White pins (correct color): #{white_pins}"
+    puts
 
+    if black_pins + white_pins > 4
+      puts "Something went wrong with the pins..."
+      exit 1
+    end
   end
 end
 
 class Breaker < Player
 
-  attr_accessor :guess_code
+  attr_accessor :code_seq, :guess_code
 
   def initialize(id)
     super(id)
@@ -136,6 +168,11 @@ class Breaker < Player
   def guess
     puts "Write down a guess."
     @guess_code.make_seq
+    @code_seq = guess_code.sequence
+  end
+
+  def reset_guess
+    @guess_code.set_new_seq
   end
 
 end
@@ -156,10 +193,9 @@ class Code
     puts "Red, Green, Blue, Yellow, Orange, Purple"
 
     until @sequence.length == SIZE
-      puts "Add a color (#{SIZE - @sequence.length} left):"
-      color = gets.chomp
-      add_color(color)
-      print(@sequence)
+      puts "Add all colors by name (#{SIZE - @sequence.length}):"
+      colors = gets.chomp.split(" ")
+      add_colors(colors)
     end
   end
 
@@ -212,9 +248,12 @@ class Code
 
   private #------------
 
-  def add_color(color)
-    id = get_color_id(color)
-    @sequence << id if id != 0
+  def add_colors(colors)
+
+    colors.each do|col|
+      id = get_color_id(col)
+      @sequence << id if id != 0
+    end
   end
 
   # use an enum?!

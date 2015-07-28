@@ -4,16 +4,48 @@
 		"selected_items":
 		[
 			[
+				"A",
+				"ALLOWED_GUESS_NUM"
+			],
+			[
+				"n",
+				"number"
+			],
+			[
+				"file",
+				"filename"
+			],
+			[
+				"save",
+				"save_dir"
+			],
+			[
+				"get",
+				"get_save_game_dir"
+			],
+			[
+				"load",
+				"load_yaml"
+			],
+			[
+				"savd",
+				"saved_files"
+			],
+			[
+				"ls",
+				"list_saved_files"
+			],
+			[
+				"is",
+				"is_valid_choice"
+			],
+			[
 				"HAN",
 				"HANGMAN_BODY"
 			],
 			[
 				"HANG",
 				"HANGMAN_BODY"
-			],
-			[
-				"is",
-				"is_relevant"
 			],
 			[
 				"reve",
@@ -154,10 +186,6 @@
 			[
 				"maker",
 				"maker"
-			],
-			[
-				"get",
-				"get_color_id"
 			],
 			[
 				"attr_",
@@ -306,10 +334,6 @@
 			[
 				"rel",
 				"rel_prob"
-			],
-			[
-				"n",
-				"n_acc"
 			],
 			[
 				"x_tr",
@@ -490,41 +514,18 @@
 			[
 				"st",
 				"startIndices"
-			],
-			[
-				"char",
-				"charCountHash"
-			],
-			[
-				"cha",
-				"charCountHash"
-			],
-			[
-				"inp",
-				"input_h"
-			],
-			[
-				"lin",
-				"lineCount"
-			],
-			[
-				"tot",
-				"totalAsciiCount"
-			],
-			[
-				"ascii_",
-				"ascii_val"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "hangman/hangman_game.rb",
+			"file": "/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/twitter_spambot/micro_blogger.rb",
 			"settings":
 			{
-				"buffer_size": 168,
-				"line_ending": "Unix"
+				"buffer_size": 449,
+				"line_ending": "Unix",
+				"name": "require 'jumpstart_auth'"
 			}
 		}
 	],
@@ -552,6 +553,22 @@
 	},
 	"file_history":
 	[
+		"/home/chris0689/Programming/princeton/dev_files/cluster-1.52a/src/data.c",
+		"/home/chris0689/University/SoSe15/Strukturanalyse/SUS_assignments/sus02_keil/Blatt02/pi.c",
+		"/home/chris0689/University/SoSe15/Strukturanalyse/SUS_assignments/sus02_keil/Blatt02/pi",
+		"/home/chris0689/Programming/princeton/dev_files/meeting_notes/06-30-15.txt",
+		"/home/chris0689/Desktop/label_criteria.txt",
+		"/home/chris0689/Desktop/uni_tuts/git_vc/bioinformatik.txt",
+		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/file_io/hangman/lib/GameFile.rb",
+		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/file_io/hangman/lib/Game.rb",
+		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/file_io/hangman/lib/HangmanView.rb",
+		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/file_io/hangman/lib/SecretWord.rb",
+		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/file_io/hangman/hangman_game.rb",
+		"/home/chris0689/University/SoSe15/GIK/blatt05/Blatt05-BriemKeilRammingWeber/Aufgabe5/union_find.rb",
+		"/home/chris0689/Downloads/CompatibilityGraph.hpp",
+		"/home/chris0689/Downloads/CompatibilityGraph (1).cpp",
+		"/home/chris0689/Downloads/Blatt04-KeilWeekes/CompatibilityGraph.cpp",
+		"/home/chris0689/Downloads/Blatt04-KeilWeekes/CompatibilityGraph.hpp",
 		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/file_io/hangman/SecretWord.rb",
 		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/file_io/hangman/Game.rb",
 		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/file_io/hangman/HangmanView.rb",
@@ -631,7 +648,6 @@
 		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/leap_years.rb",
 		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/blocks.rb",
 		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/time.rb",
-		"/home/chris0689/Programming/princeton/dev_files/cluster-1.52a/src/data.c",
 		"/home/chris0689/Programming/princeton/dev_files/cluster-1.52a/src/cluster.c",
 		"/home/chris0689/Downloads/fastaIterator.rb",
 		"/home/chris0689/University/Strukturanalyse/uebung/energy_temp.rb",
@@ -664,22 +680,7 @@
 		"/home/chris0689/University/Sequenzanalyse/Blatt08/Korrektur/Blatt08-KeilRammingSchawo/Aufgabe3/multimengen_substring.rb",
 		"/home/chris0689/University/Sequenzanalyse/Blatt08/Korrektur/Blatt08-KeilRammingSchawo/Aufgabe1/evaluatecrosspoints.rb",
 		"/home/chris0689/University/PBI/Blatt09/Aufgabe3/sums.rb",
-		"/home/chris0689/University/PBI/Blatt10/Aufgabe2/mRNA_output.txt",
-		"/home/chris0689/University/PBI/Blatt10/Aufgabe2/result.txt",
-		"/home/chris0689/University/PBI/Blatt08/Aufgabe4/correct10-1.rb",
-		"/home/chris0689/University/PBI/Blatt08/Aufgabe4/error10-1.rb",
-		"/home/chris0689/University/PBI/Blatt09/Aufgabe2/backwards.rb",
-		"/home/chris0689/University/PBI/Blatt09/Aufgabe4/chardistribution.rb",
-		"/home/chris0689/Downloads/backwards.rb",
-		"/home/chris0689/University/PBI/Blatt09/Aufgabe1/varnames.rb",
-		"/home/chris0689/University/Sequenzanalyse/Blatt08/Aufgabe3/multimengen_substring.rb",
-		"/home/chris0689/Programming/princeton/treeView3/cluster-1.52a/src/cluster.c",
-		"/home/chris0689/Programming/webdev/theodinproject/theOdinProject/caesar_cipher/caesar_cipher.rb",
-		"/home/chris0689/University/Sequenzanalyse/Blatt07/Aufgabe1/substring_match.c",
-		"/home/chris0689/University/GCI/Blatt06/cpp_training.cpp",
-		"/home/chris0689/University/PBI/Blatt09/swiss.fna",
-		"/home/chris0689/University/PBI/Blatt08/Aufgabe1/quicksort_gen.c",
-		"/home/chris0689/University/PBI/Blatt07/Aufgabe1/polygon.c"
+		"/home/chris0689/University/PBI/Blatt10/Aufgabe2/mRNA_output.txt"
 	],
 	"find":
 	{
@@ -697,6 +698,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"<<<<<<<<<<<<<<<<<<<<<<<\n",
+			"load_yaml",
+			"number",
+			"print_pole_rows",
+			"u2501",
 			"false_guess_num",
 			"is_char",
 			"char",
@@ -819,12 +825,7 @@
 			"row_length",
 			"seq2",
 			"seq1_len",
-			"seq1",
-			"seq1_len",
-			"seq2_len",
-			"matrix",
-			"imum",
-			"Spalte"
+			"seq1"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -847,25 +848,24 @@
 			[
 				{
 					"buffer": 0,
-					"file": "hangman/hangman_game.rb",
+					"file": "/home/chris0689/Programming/webdev/theodinproject/theOdinProject/Ruby_tuts/twitter_spambot/micro_blogger.rb",
 					"settings":
 					{
-						"buffer_size": 168,
+						"buffer_size": 449,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								168,
-								168
+								366,
+								291
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Ruby/Ruby.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"auto_name": "require 'jumpstart_auth'",
+							"syntax": "Packages/Ruby/Ruby.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -940,6 +940,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 212.0,
+	"side_bar_width": 169.0,
 	"status_bar_visible": true
 }

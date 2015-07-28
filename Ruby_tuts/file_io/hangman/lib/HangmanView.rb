@@ -20,7 +20,7 @@ class HangmanView
       
       # count to make up in height later
       body_parts = 0
-      puts "i: #{i}"
+      puts "i: "
 
       # rows with body parts
       if false_guess_num == i - 1
